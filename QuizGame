@@ -1,0 +1,38 @@
+import random
+
+# Define questions and answers about the velvet belly lanternshark
+questions = {
+    "What is the main purpose of the bioluminescent organs in velvet belly lanternsharks?": ["Scaring off predators", "Attracting mates", "Luring prey", "Communication"],
+    "Where are the bioluminescent organs of the velvet belly lanternshark located?": ["Only on the belly", "On the belly and fins", "All over the body", "On the tail"],
+    "What color is the light emitted by the bioluminescent organs of the velvet belly lanternshark?": ["Blue", "Red", "Green", "Yellow"],
+    "How does the velvet belly lanternshark use its small size as an adaptation?": ["To hide from predators", "To swim faster", "To mimic other animals", "To reduce energy needs"],
+    "What type of water do velvet belly lanternsharks primarily inhabit?": ["Tropical shallow waters", "Deep ocean waters", "Freshwater habitats", "Brackish waters"]
+}
+
+def ask_question(question, options):
+    print("\nQuestion:")
+    print(question)
+    print("Options:")
+    for idx, choice in enumerate(options, 1):
+        print(f"{idx}. {choice}")
+    answer = input("Enter the number of your choice: ")
+    return answer
+
+def quiz_game():
+    correct_answers = 0
+    question_list = list(questions.items())
+    random.shuffle(question_list)  # Shuffle questions for randomness
+    
+    for question, options in question_list:
+        answer = ask_question(question, options)
+        if options[int(answer) - 1] == options[0]:  # Correct answer is always the first option in the list
+            print("Correct!")
+            correct_answers += 1
+        else:
+            print("Wrong! The correct answer was:", options[0])
+
+    print("\nGame Over!")
+    print(f"You scored {correct_answers} out of {len(questions)}")
+
+if __name__ == "__main__":
+    quiz_game()
